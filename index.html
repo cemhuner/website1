@@ -3,32 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orhan Cem Hüner</title>
+  <title data-tr="Orhan Cem Hüner" data-en="Orhan Cem Hüner">Orhan Cem Hüner</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome İkon Seti -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'], },
           colors: {
-            brand: {
-              50: '#f0fdfa',
-              500: '#14b8a6',
-              600: '#0d9488',
-            }
+            brand: { 50: '#f0fdfa', 500: '#14b8a6', 600: '#0d9488', }
           }
         }
       }
@@ -40,191 +29,261 @@
   <!-- Navigasyon Çubuğu -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
     <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-bold tracking-tight text-white hover:text-teal-400 transition-colors">
+      <a href="index.html" class="font-bold tracking-tight text-white hover:text-teal-400 transition-colors">
         Orhan Cem Hüner<span class="text-teal-400">.</span>
       </a>
-      <div class="flex space-x-6 text-sm font-medium text-neutral-400">
-        <a href="#hakkimda" class="hover:text-white transition-colors">Hakkımda</a>
-        <a href="#projeler" class="hover:text-white transition-colors">Projeler</a>
-        <a href="#iletisim" class="hover:text-white transition-colors">İletişim</a>
+      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-400">
+        <!-- Hakkımda linki ayrı sayfaya gider -->
+        <a href="cv.html" class="hover:text-white transition-colors" data-tr="Hakkımda" data-en="About Me">Hakkımda</a>
+        <a href="#projeler" class="hover:text-white transition-colors" data-tr="Projeler" data-en="Projects">Projeler</a>
+        <a href="#iletisim" class="hover:text-white transition-colors" data-tr="İletişim" data-en="Contact">İletişim</a>
+        <button id="langToggle" class="px-2 py-1 bg-neutral-800 hover:bg-neutral-700 rounded text-xs transition-colors">EN</button>
       </div>
     </div>
   </nav>
 
-
-  <!-- Video Arka Planlı Giriş (Hero) Bölümü -->
+  <!-- Giriş (Hero) Bölümü -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-neutral-800">
-    
-    <!-- Arka Planda Dönen Video -->
-    <video 
-      id="bgVideo"
-      autoplay 
-      loop 
-      muted 
-      playsinline 
-      preload="auto"
-      class="absolute inset-0 w-full h-full object-cover z-0 -[2px]">
+    <video id="bgVideo" autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
       <source src="website_anim3.mp4" type="video/mp4">
-      Tarayıcınız video etiketini desteklemiyor.
     </video>
-
-    <!-- Koyu Filtre Katmanı (Metinlerin okunabilmesi için) -->
     <div class="absolute inset-0 bg-neutral-950/75 backdrop-blur-[2px] z-10"></div>
-
-    <!-- Giriş İçeriği -->
     <div class="relative z-20 max-w-3xl w-full px-6 text-center space-y-6 pt-16">
-      
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-700 bg-neutral-900/90 text-xs font-medium text-teal-400 backdrop-blur-sm">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
         </span>
-        Yeni fırsatlara açık
+        <span data-tr="Yeni fırsatlara açık" data-en="Open to new opportunities">Yeni fırsatlara açık</span>
       </div>
-
       <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
-        Merhaba, ben <span class="text-teal-400">Orhan Cem Hüner</span>. <br>
-        Elektrik Elektronik Mühendisi.
+        <span data-tr="Merhaba, ben" data-en="Hello, I'm">Merhaba, ben</span> <span class="text-teal-400">Orhan Cem Hüner</span>. <br>
+        <span data-tr="Elektrik Elektronik Mühendisi." data-en="Electrical and Electronics Engineer.">Elektrik Elektronik Mühendisi.</span>
       </h1>
-
-      <p class="text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed">
-        Kendinizi 1-2 cümleyle özetleyin. Arka plandaki video projelerinizden kesitler sunarken burada temel odak alanınızı aktarabilirsiniz.
+      <p class="text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed" data-tr="Pamukkale Üniversitesi'nde öğrenim gören, donanım tasarımı, endüstriyel otomasyon ve kontrol algoritmaları alanlarında projeler geliştiren tutkulu bir mühendis adayıyım." data-en="A passionate engineering student at Pamukkale University developing projects in hardware design, industrial automation, and control algorithms.">
+        Pamukkale Üniversitesi'nde öğrenim gören, donanım tasarımı, endüstriyel otomasyon ve kontrol algoritmaları alanlarında projeler geliştiren tutkulu bir mühendis adayıyım.
       </p>
-
       <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a href="#iletisim" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-teal-500 hover:bg-teal-600 text-neutral-950 font-semibold text-sm transition-colors shadow-lg shadow-teal-500/20">
-          İletişime Geç
-        </a>
-        <a href="#projeler" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 font-semibold text-sm transition-colors backdrop-blur-sm">
-          Çalışmalarımı Gör
-        </a>
+        <a href="#iletisim" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-teal-500 hover:bg-teal-600 text-neutral-950 font-semibold text-sm transition-colors shadow-lg shadow-teal-500/20" data-tr="İletişime Geç" data-en="Contact Me">İletişime Geç</a>
+        <a href="#projeler" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 font-semibold text-sm transition-colors backdrop-blur-sm" data-tr="Çalışmalarımı Gör" data-en="View My Work">Çalışmalarımı Gör</a>
       </div>
-
     </div>
   </section>
 
-  <!-- Ana İçerik Alanı -->
   <main class="max-w-4xl mx-auto px-6 py-24 space-y-28">
-
-    <!-- Hakkımda Bölümü -->
+    
+    <!-- Hakkımda Kısa Bölümü -->
     <section id="hakkimda" class="space-y-6 scroll-mt-24">
-      <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase">Hakkımda</h2>
+      <div class="flex items-center justify-between">
+        <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase" data-tr="Hakkımda" data-en="About Me">Hakkımda</h2>
+        <a href="cv.html" class="text-sm text-teal-400 hover:text-teal-300 transition-colors" data-tr="Tüm Detayları Gör &rarr;" data-en="View Full Details &rarr;">Tüm Detayları Gör &rarr;</a>
+      </div>
       <div class="space-y-4 text-neutral-300 leading-relaxed max-w-3xl">
-        <p>
-          Burada geçmişinizden, uzmanlıklarınızdan ve üzerinde çalışmaktan keyif aldığınız konulardan bahsedebilirsiniz.
-        </p>
-        <p>
-          Geliştirdiğiniz projeler, edindiğiniz deneyimler ve profesyonel vizyonunuza dair detayları buraya ekleyebilirsiniz.
+        <p data-tr="Pamukkale Üniversitesi Elektrik ve Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim. EÜAŞ 18 Mart Termik Santrali ve KALE Kaleseramik A.Ş. bünyesinde tamamladığım stajlarla PLC, SCADA sistemleri ve endüstriyel otomasyon altyapılarında pratik tecrübeler kazandım." data-en="I am continuing my undergraduate studies in Electrical and Electronics Engineering at Pamukkale University. Through internships at EÜAŞ 18 Mart Thermal Power Plant and KALE Kaleseramik A.Ş., I gained practical experience in PLC, SCADA systems, and industrial automation infrastructures.">
+          Pamukkale Üniversitesi Elektrik ve Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim. EÜAŞ 18 Mart Termik Santrali ve KALE Kaleseramik A.Ş. bünyesinde tamamladığım stajlarla PLC, SCADA sistemleri ve endüstriyel otomasyon altyapılarında pratik tecrübeler kazandım.
         </p>
       </div>
-
-      <!-- Yetenek / Etiket Listesi -->
       <div class="flex flex-wrap gap-2 pt-2">
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Yetenek / Araç 1</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Yetenek / Araç 2</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Yetenek / Araç 3</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Yetenek / Araç 4</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">C/C++</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Verilog</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Python</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">MATLAB</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">RTOS</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">TCP/IP & UDP</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Ansys Maxwell</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">TensorFlow</span>
       </div>
     </section>
 
-    <!-- Projeler Bölümü -->
-    <section id="projeler" class="space-y-6 scroll-mt-24">
-      <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase">Öne Çıkan Çalışmalar</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <!-- Kart 1 -->
-        <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-neutral-400">
-              <i class="fa-regular fa-folder text-xl text-teal-400"></i>
-              <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
-            </div>
-            <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors">Proje Başlığı Bir</h3>
-            <p class="text-sm text-neutral-400 leading-relaxed">
-              Projenin amacını, sunduğu çözümü ve nasıl bir fayda sağladığını özetleyen kısa bir metin.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 pt-4 text-xs font-mono text-neutral-500">
-            <span>Kategori</span>
-            <span>•</span>
-            <span>Kullanılan Araç</span>
-          </div>
+    <!-- Projeler Bölümü (Karusel) -->
+    <section id="projeler" class="space-y-6 scroll-mt-24 relative">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase" data-tr="Öne Çıkan Çalışmalar" data-en="Featured Projects">Öne Çıkan Çalışmalar</h2>
+        <div class="flex gap-2">
+          <button id="prevBtn" class="p-2 bg-neutral-900 hover:bg-neutral-800 rounded-full border border-neutral-700 transition"><i class="fa-solid fa-chevron-left text-neutral-400"></i></button>
+          <button id="nextBtn" class="p-2 bg-neutral-900 hover:bg-neutral-800 rounded-full border border-neutral-700 transition"><i class="fa-solid fa-chevron-right text-neutral-400"></i></button>
         </div>
-
-        <!-- Kart 2 -->
-        <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-neutral-400">
-              <i class="fa-regular fa-folder text-xl text-teal-400"></i>
-              <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+      </div>
+      
+      <div class="overflow-hidden w-full relative">
+        <div id="carouselTrack" class="flex transition-transform duration-300 ease-out w-full">
+          
+          <!-- Proje 1 -->
+          <div class="w-full md:w-1/2 flex-shrink-0 p-2">
+            <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all h-full group flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-neutral-400">
+                  <i class="fa-regular fa-folder text-xl text-teal-400"></i>
+                  <a href="https://github.com/cemhuner/Induction-Motors-Final-Project" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                </div>
+                <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors" data-tr="Asenkron Motor Arıza Tespiti" data-en="Induction Motor Fault Detection">Asenkron Motor Arıza Tespiti</h3>
+              </div>
             </div>
-            <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors">Proje Başlığı İki</h3>
-            <p class="text-sm text-neutral-400 leading-relaxed">
-              Çalışmanızın temel dinamiklerini ve elde edilen somut çıktıları anlatan kısa bir açıklama.
-            </p>
           </div>
-          <div class="flex flex-wrap gap-2 pt-4 text-xs font-mono text-neutral-500">
-            <span>Kategori</span>
-            <span>•</span>
-            <span>Kullanılan Araç</span>
-          </div>
-        </div>
 
+          <!-- Proje 2 -->
+          <div class="w-full md:w-1/2 flex-shrink-0 p-2">
+            <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all h-full group flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-neutral-400">
+                  <i class="fa-regular fa-folder text-xl text-teal-400"></i>
+                  <a href="https://github.com/cemhuner/FPGA-Projects" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                </div>
+                <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors" data-tr="FPGA Verilog Projeleri" data-en="FPGA Verilog Projects">FPGA Verilog Projeleri</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proje 3 -->
+          <div class="w-full md:w-1/2 flex-shrink-0 p-2">
+            <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all h-full group flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-neutral-400">
+                  <i class="fa-regular fa-folder text-xl text-teal-400"></i>
+                  <a href="https://github.com/cemhuner/ANSYS-Projects" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                </div>
+                <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors" data-tr="ANSYS Projeleri" data-en="ANSYS Projects">ANSYS Projeleri</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proje 4 -->
+          <div class="w-full md:w-1/2 flex-shrink-0 p-2">
+            <div class="p-6 rounded-xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-all h-full group flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-neutral-400">
+                  <i class="fa-regular fa-folder text-xl text-teal-400"></i>
+                  <a href="https://github.com/cemhuner/Custom-Motor-Simulation" target="_blank" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                </div>
+                <h3 class="text-lg font-semibold text-white group-hover:text-teal-400 transition-colors" data-tr="Kendi Motor Simülasyonum" data-en="Custom Motor Simulation">Kendi Motor Simülasyonum</h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Karusel İndikatörleri (Noktalar) -->
+      <div class="flex justify-center gap-2 mt-4">
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-teal-500"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
       </div>
     </section>
 
     <!-- İletişim Bölümü -->
     <section id="iletisim" class="space-y-6 scroll-mt-24">
-      <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase">İletişim</h2>
+      <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase" data-tr="İletişim" data-en="Contact">İletişim</h2>
       <div class="p-8 rounded-xl bg-neutral-900/40 border border-neutral-800 text-center space-y-4">
-        <h3 class="text-2xl font-bold text-white tracking-tight">Bir fikir veya iş birliği mi var?</h3>
-        <p class="text-neutral-400 max-w-md mx-auto text-sm leading-relaxed">
-          Benimle iletişime geçmek, soru sormak veya görüşlerinizi paylaşmak için dilediğiniz zaman e-posta gönderebilirsiniz.
+        <h3 class="text-2xl font-bold text-white tracking-tight" data-tr="Bir fikir veya iş birliği mi var?" data-en="Have an idea or collaboration?">Bir fikir veya iş birliği mi var?</h3>
+        <p class="text-neutral-400 max-w-md mx-auto text-sm leading-relaxed" data-tr="Benimle iletişime geçmek için dilediğiniz zaman e-posta gönderebilirsiniz." data-en="Feel free to email me anytime to get in touch.">
+          Benimle iletişime geçmek için dilediğiniz zaman e-posta gönderebilirsiniz.
         </p>
         <div class="pt-2">
-          <!-- 'eposta@adresiniz.com' kısmını kendi e-postanızla değiştirin -->
-          <a href="mailto:eposta@adresiniz.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-neutral-950 hover:bg-neutral-200 font-medium text-sm transition-colors">
+          <a href="mailto:orhan@cemhuner.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-neutral-950 hover:bg-neutral-200 font-medium text-sm transition-colors">
             <i class="fa-regular fa-envelope"></i>
             orhan@cemhuner.com
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Alt Bilgi (Footer) & Sosyal Medya -->
   <footer class="border-t border-neutral-900 py-8">
     <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-      <p>© 2026 Orhan Cem Hüner. Tüm hakları saklıdır.</p>
-      
+      <p data-tr="© 2026 Orhan Cem Hüner. Tüm hakları saklıdır." data-en="© 2026 Orhan Cem Hüner. All rights reserved.">© 2026 Orhan Cem Hüner. Tüm hakları saklıdır.</p>
       <div class="flex items-center space-x-5 text-neutral-400 text-base">
-        <!-- Sosyal medya hesaplarınızın linklerini href alanlarına yazın -->
-        <a href="https://github.com" target="_blank" class="hover:text-white transition-colors" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://x.com" target="_blank" class="hover:text-white transition-colors" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://github.com/cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://youtube.com/@cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- Otomatik Oynatmayı Garantiye Alan ve Hataları Bildiren Script -->
+  <!-- Karusel ve Çoklu Dil JavaScript -->
   <script>
+    // 1. Dil Seçeneği Mantığı
+    document.addEventListener('DOMContentLoaded', () => {
+      // Türkiye dışında saat dilimi olanlar için varsayılan İngilizce
+      const isTurkey = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Istanbul';
+      let currentLang = localStorage.getItem('lang');
+      
+      if (!currentLang) {
+        currentLang = isTurkey ? 'tr' : 'en';
+      }
+
+      const langToggleBtn = document.getElementById('langToggle');
+
+      const applyLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-tr]').forEach(el => {
+          el.innerHTML = lang === 'tr' ? el.getAttribute('data-tr') : el.getAttribute('data-en');
+        });
+        langToggleBtn.innerText = lang === 'tr' ? 'EN' : 'TR';
+        localStorage.setItem('lang', lang);
+      };
+
+      applyLanguage(currentLang);
+
+      langToggleBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'tr' ? 'en' : 'tr';
+        applyLanguage(currentLang);
+      });
+    });
+
+    // 2. Karusel Mantığı
+    let currentIndex = 0;
+    const totalProjects = 4;
+    
+    function updateCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const isMobile = window.innerWidth < 768;
+      const itemsToShow = isMobile ? 1 : 2;
+      const maxIndex = totalProjects - itemsToShow;
+      
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+
+      const percentage = -(currentIndex * (100 / itemsToShow));
+      track.style.transform = `translateX(${percentage}%)`;
+
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        if (index >= currentIndex && index < currentIndex + itemsToShow) {
+          dot.classList.add('bg-teal-500');
+          dot.classList.remove('bg-neutral-700');
+        } else {
+          dot.classList.add('bg-neutral-700');
+          dot.classList.remove('bg-teal-500');
+        }
+      });
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex++;
+      updateCarousel();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex--;
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('DOMContentLoaded', updateCarousel);
+
+    // Otomatik Video Oynatma Güvencesi
     window.addEventListener('DOMContentLoaded', () => {
       const video = document.getElementById('bgVideo');
       if (video) {
-        // Tarayıcıların autoplay engelini aşmak için muted durumunu JS ile teyit ediyoruz
         video.muted = true;
-        video.defaultMuted = true;
-
         const playPromise = video.play();
         if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.warn("Video otomatik oynatılamadı. Olası nedenler: dosya yolu yanlış (404), codec uyumsuzluğu veya tarayıcı kısıtlaması.", error);
-          });
+          playPromise.catch(e => console.warn(e));
         }
       }
     });
   </script>
-
 </body>
 </html>
