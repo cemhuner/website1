@@ -24,7 +24,7 @@
     }
   </script>
   
-  <!-- Liquid Glass Animasyon Stilleri -->
+  <!-- CSS Stilleri ve Animasyonlar -->
   <style>
     @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
@@ -44,11 +44,33 @@
     .mix-blend-screen {
       mix-blend-mode: screen;
     }
+    
+    /* Yeni Gelişmiş Liquid Glass Sınıfı */
+    .liquid-glass-layer {
+      backdrop-filter: blur(12px) brightness(1.1);
+      -webkit-backdrop-filter: blur(12px) brightness(1.1);
+      box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 8px rgba(255, 255, 255, 0.1),
+        0 8px 32px rgba(0, 0, 0, 0.25);
+      filter: url(#liquid-refraction);
+    }
   </style>
 </head>
 <body class="bg-neutral-950 text-neutral-200 font-sans antialiased selection:bg-teal-500 selection:text-white relative">
 
-  <!-- Liquid Glass Arka Plan Efekti (Bloblar) -->
+  <!-- SVG Liquid Glass Filtresi -->
+  <svg xmlns="http://w3.org/2000/svg" style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+    <defs>
+      <filter id="liquid-refraction">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise" />
+        <feGaussianBlur in="noise" stdDeviation="8" result="blurredNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="40" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Arka Plan Blobları -->
   <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
     <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-teal-500 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
     <div class="absolute top-[20%] right-[-5%] w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
@@ -56,7 +78,7 @@
   </div>
 
   <!-- Navigasyon Çubuğu -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-sm border-b border-neutral-800">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
     <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="font-bold tracking-tight text-white hover:text-teal-400 transition-colors">
         Orhan Cem Hüner<span class="text-teal-400">.</span>
@@ -112,13 +134,14 @@
         </p>
       </div>
       <div class="flex flex-wrap gap-2 pt-2">
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">C/C++</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Verilog</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Python</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">MATLAB</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">RTOS</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">TCP/IP & UDP</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Ansys Maxwell</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">C/C++</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Verilog</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Python</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">MATLAB</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">RTOS</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">TCP/IP & UDP</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">Ansys Maxwell</span>
+        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs text-neutral-300">TensorFlow</span>
       </div>
     </section>
 
@@ -132,98 +155,107 @@
       <div class="relative group/carousel">
         
         <!-- Sol Ok -->
-        <button id="prevBtn" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
+        <button id="prevBtn" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-md rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
         <!-- Sağ Ok -->
-        <button id="nextBtn" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
+        <button id="nextBtn" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-md rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
-<div class="overflow-hidden w-full relative">
-  <div id="carouselTrack" class="flex transition-transform duration-500 ease-out w-full">
-    
-    <!-- Proje 1 -->
-    <div class="w-full flex-none px-1 py-4"> 
-      <a href="https://github.com/cemhuner/Induction-Motors-Final-Project" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image1.PNG" alt="Asenkron Motor Arıza Tespiti" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
 
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Asenkron Motor Arıza Tespiti" data-en="Induction Motor Fault Detection">Asenkron Motor Arıza Tespiti</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">TensorFlow</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">MATLAB</span>
+        <div class="overflow-hidden w-full relative rounded-2xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out w-full">
+            
+            <!-- Proje 1 -->
+            <div class="w-full flex-none px-1 py-4"> 
+              <a href="https://github.com/cemhuner/Induction-Motors-Final-Project" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Asenkron Motor Arıza Tespiti" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <!-- Gelişmiş Liquid Glass Katmanı -->
+                <div class="absolute inset-0 bg-neutral-950/30 liquid-glass-layer group-hover:bg-neutral-950/10 transition-colors duration-300 z-10 rounded-2xl"></div>
+                <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Asenkron Motor Arıza Tespiti" data-en="Induction Motor Fault Detection">Asenkron Motor Arıza Tespiti</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">TensorFlow</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">MATLAB</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
+
+            <!-- Proje 2 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/FPGA-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2070&auto=format&fit=crop" alt="FPGA Verilog Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 bg-neutral-950/30 liquid-glass-layer group-hover:bg-neutral-950/10 transition-colors duration-300 z-10 rounded-2xl"></div>
+                <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="FPGA Verilog Projeleri" data-en="FPGA Verilog Projects">FPGA Verilog Projeleri</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Verilog</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Intel Quartus</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">ModelSim</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Proje 3 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/ANSYS-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="https://images.unsplash.com/photo-1620912189868-30777e113647?q=80&w=2069&auto=format&fit=crop" alt="ANSYS Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 bg-neutral-950/30 liquid-glass-layer group-hover:bg-neutral-950/10 transition-colors duration-300 z-10 rounded-2xl"></div>
+                <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="ANSYS Projeleri" data-en="ANSYS Projects">ANSYS Projeleri</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Ansys Maxwell</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Motor-CAD</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Simülasyon</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Proje 4 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/Custom-Motor-Simulation" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4bf598a3fdf?q=80&w=2070&auto=format&fit=crop" alt="Kendi Motor Simülasyonum" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 bg-neutral-950/30 liquid-glass-layer group-hover:bg-neutral-950/10 transition-colors duration-300 z-10 rounded-2xl"></div>
+                <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Kendi Motor Simülasyonum" data-en="Custom Motor Simulation">Kendi Motor Simülasyonum</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">C/C++</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
+                      <span class="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium text-neutral-200">HIL</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
           </div>
         </div>
-      </a>
-    </div>
+      </div>
 
-    <!-- Proje 2 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/FPGA-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image2.jpeg" alt="FPGA Verilog Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="FPGA Verilog Projeleri" data-en="FPGA Verilog Projects">FPGA Verilog Projeleri</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Verilog</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Intel Quartus</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">ModelSim</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Proje 3 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/ANSYS-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image3.png" alt="ANSYS Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="ANSYS Projeleri" data-en="ANSYS Projects">ANSYS Projeleri</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Ansys Maxwell</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Motor-CAD</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Simülasyon</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Proje 4 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/Custom-Motor-Simulation" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image4.png" alt="Kendi Motor Simülasyonum" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Kendi Motor Simülasyonum" data-en="Custom Motor Simulation">Kendi Motor Simülasyonum</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">C/C++</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">HIL</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
       <!-- Karusel İndikatörleri (Noktalar) -->
       <div class="flex justify-center gap-2 mt-4">
         <span class="dot w-2 h-2 rounded-full transition-colors bg-teal-500"></span>
@@ -298,9 +330,9 @@
       const itemsToShow = 1; 
       const maxIndex = totalProjects - itemsToShow;
       
-      // Sonsuz döngü (Loop) mantığı eklendi
-      if (currentIndex > maxIndex) currentIndex = 0; // Sondan başa
-      if (currentIndex < 0) currentIndex = maxIndex; // Baştan sona
+      // Sonsuz döngü (Loop)
+      if (currentIndex > maxIndex) currentIndex = 0; 
+      if (currentIndex < 0) currentIndex = maxIndex; 
 
       const percentage = -(currentIndex * 100);
       track.style.transform = `translateX(${percentage}%)`;
