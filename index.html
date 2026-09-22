@@ -24,7 +24,6 @@
     }
   </script>
   
-  <!-- Liquid Glass Animasyon Stilleri -->
   <style>
     @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
@@ -44,11 +43,57 @@
     .mix-blend-screen {
       mix-blend-mode: screen;
     }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.0);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 0px 0px rgba(255, 255, 255, 0);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+      );
+      z-index: 1;
+    }
+
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8),
+        transparent,
+        rgba(255, 255, 255, 0.3)
+      );
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="bg-neutral-950 text-neutral-200 font-sans antialiased selection:bg-teal-500 selection:text-white relative">
 
-  <!-- Liquid Glass Arka Plan Efekti (Bloblar) -->
+  <!-- Arka Plan Blobları -->
   <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
     <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-teal-500 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
     <div class="absolute top-[20%] right-[-5%] w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
@@ -56,16 +101,16 @@
   </div>
 
   <!-- Navigasyon Çubuğu -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-sm border-b border-neutral-800">
-    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="font-bold tracking-tight text-white hover:text-teal-400 transition-colors">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-card !bg-neutral-950/40 border-b-0">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between z-20 relative">
+      <a href="index.html" class="font-bold tracking-tight text-white hover:text-teal-300 transition-colors">
         Orhan Cem Hüner<span class="text-teal-400">.</span>
       </a>
-      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-400">
+      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
         <a href="cv.html" class="hover:text-white transition-colors" data-tr="Hakkımda" data-en="About Me">Hakkımda</a>
         <a href="#projeler" class="hover:text-white transition-colors" data-tr="Projeler" data-en="Projects">Projeler</a>
         <a href="#iletisim" class="hover:text-white transition-colors" data-tr="İletişim" data-en="Contact">İletişim</a>
-        <button id="langToggle" class="px-2 py-1 bg-neutral-800 hover:bg-neutral-700 rounded text-xs transition-colors">EN</button>
+        <button id="langToggle" class="px-3 py-1.5 rounded-md text-xs transition-colors hover:bg-white/10 glass-card">EN</button>
       </div>
     </div>
   </nav>
@@ -77,13 +122,16 @@
     </video>
     <div class="absolute inset-0 bg-neutral-950/75 backdrop-blur-[2px] z-10"></div>
     <div class="relative z-20 max-w-3xl w-full px-6 text-center space-y-6 pt-16">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-700 bg-neutral-900/90 text-xs font-medium text-teal-400 backdrop-blur-sm">
+      
+      <!-- Yeni Fırsatlara Açık Pill'i -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-teal-300 glass-card">
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-400"></span>
         </span>
-        <span data-tr="Yeni fırsatlara açık" data-en="Open to new opportunities">Yeni fırsatlara açık</span>
+        <span class="relative z-10" data-tr="Yeni fırsatlara açık" data-en="Open to new opportunities">Yeni fırsatlara açık</span>
       </div>
+      
       <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
         <span data-tr="Merhaba, ben" data-en="Hello, I'm">Merhaba, ben</span> <span class="text-teal-400">Orhan Cem Hüner</span>. <br>
         <span data-tr="Elektrik Elektronik Mühendisi." data-en="Electrical and Electronics Engineer.">Elektrik Elektronik Mühendisi.</span>
@@ -91,9 +139,14 @@
       <p class="text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed" data-tr="Gömülü sistemler, donanım tasarımı, endüstriyel otomasyon, HIL sistemleri ve kontrol algoritmaları alanlarında projeler geliştiren tutkulu bir mühendisim." data-en="A passionate engineer developing embedded systems, hardware design, industrial automation, HIL systems and control algorithms.">
         Gömülü sistemler, donanım tasarımı, endüstriyel otomasyon, HIL sistemleri ve kontrol algoritmaları alanlarında projeler geliştiren tutkulu bir mühendisim.
       </p>
+      
       <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a href="#iletisim" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-teal-500 hover:bg-teal-600 text-neutral-950 font-semibold text-sm transition-colors shadow-lg shadow-teal-500/20" data-tr="İletişime Geçin" data-en="Contact Me">İletişime Geçin</a>
-        <a href="#projeler" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 font-semibold text-sm transition-colors backdrop-blur-sm" data-tr="Çalışmalarıma Göz Atın" data-en="View My Work">Çalışmalarımı Göz Atın</a>
+        <a href="#iletisim" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-white/20 glass-card" data-tr="İletişime Geçin" data-en="Contact Me">
+          <span class="relative z-10">İletişime Geçin</span>
+        </a>
+        <a href="#projeler" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-white/20 glass-card" data-tr="Çalışmalarıma Göz Atın" data-en="View My Work">
+          <span class="relative z-10">Çalışmalarımı Göz Atın</span>
+        </a>
       </div>
     </div>
   </section>
@@ -111,14 +164,16 @@
           Pamukkale Üniversitesi Elektrik ve Elektronik Mühendisliği bölümünde lisans eğitimi aldım. EÜAŞ 18 Mart Termik Santrali ve KALE Kaleseramik A.Ş. bünyesinde tamamladığım stajlarla PLC, SCADA sistemleri ve endüstriyel otomasyon altyapılarında pratik tecrübeler kazandım.
         </p>
       </div>
+      
       <div class="flex flex-wrap gap-2 pt-2">
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">C/C++</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Verilog</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Python</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">MATLAB</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">RTOS</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">TCP/IP & UDP</span>
-        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs backdrop-blur-sm text-neutral-300">Ansys Maxwell</span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">C/C++</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Verilog</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Python</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">MATLAB</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">RTOS</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">TCP/IP & UDP</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Ansys Maxwell</span></span>
+        <span class="px-4 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">TensorFlow</span></span>
       </div>
     </section>
 
@@ -128,133 +183,137 @@
         <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase" data-tr="Öne Çıkan Çalışmalar" data-en="Featured Projects">Öne Çıkan Çalışmalar</h2>
       </div>
       
-      <!-- Karusel ve Okların Dış Kapsayıcısı -->
       <div class="relative group/carousel">
         
-        <!-- Sol Ok -->
-        <button id="prevBtn" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
-          <i class="fa-solid fa-chevron-left"></i>
+        <button id="prevBtn" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 z-40 text-white hover:bg-white/20 hover:scale-110 glass-card">
+          <i class="fa-solid fa-chevron-left relative z-10"></i>
         </button>
 
-        <!-- Sağ Ok -->
-        <button id="nextBtn" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900/60 hover:bg-neutral-900/90 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 z-40 text-white shadow-xl opacity-80 hover:opacity-100 hover:scale-110">
-          <i class="fa-solid fa-chevron-right"></i>
+        <button id="nextBtn" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 z-40 text-white hover:bg-white/20 hover:scale-110 glass-card">
+          <i class="fa-solid fa-chevron-right relative z-10"></i>
         </button>
-<div class="overflow-hidden w-full relative">
-  <div id="carouselTrack" class="flex transition-transform duration-500 ease-out w-full">
-    
-    <!-- Proje 1 -->
-    <div class="w-full flex-none px-1 py-4"> 
-      <a href="https://github.com/cemhuner/Induction-Motors-Final-Project" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image1.PNG" alt="Asenkron Motor Arıza Tespiti" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
 
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Asenkron Motor Arıza Tespiti" data-en="Induction Motor Fault Detection">Asenkron Motor Arıza Tespiti</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">TensorFlow</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">MATLAB</span>
+        <div class="overflow-hidden w-full relative rounded-2xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out w-full">
+            
+            <!-- Proje 1 -->
+            <div class="w-full flex-none px-1 py-4"> 
+              <a href="https://github.com/cemhuner/Induction-Motors-Final-Project" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="image1.PNG" alt="Asenkron Motor Arıza Tespiti" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 z-10 transition-colors duration-300 group-hover:bg-neutral-950/20 rounded-2xl glass-card"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-300 transition-colors mb-4" data-tr="Asenkron Motor Arıza Tespiti" data-en="Induction Motor Fault Detection">Asenkron Motor Arıza Tespiti</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Python</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">TensorFlow</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">MATLAB</span></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
+
+            <!-- Proje 2 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/FPGA-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="image2.jpeg" alt="FPGA Verilog Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 z-10 transition-colors duration-300 group-hover:bg-neutral-950/20 rounded-2xl glass-card"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-300 transition-colors mb-4" data-tr="FPGA Verilog Projeleri" data-en="FPGA Verilog Projects">FPGA Verilog Projeleri</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Verilog</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Intel Quartus</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">ModelSim</span></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Proje 3 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/ANSYS-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="image3.png" alt="ANSYS Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 z-10 transition-colors duration-300 group-hover:bg-neutral-950/20 rounded-2xl glass-card"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-300 transition-colors mb-4" data-tr="ANSYS Projeleri" data-en="ANSYS Projects">ANSYS Projeleri</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Ansys Maxwell</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Motor-CAD</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Simülasyon</span></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Proje 4 -->
+            <div class="w-full flex-none px-1 py-4">
+              <a href="https://github.com/cemhuner/Custom-Motor-Simulation" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
+                <img src="image4.png" alt="Kendi Motor Simülasyonum" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
+                
+                <div class="absolute inset-0 z-10 transition-colors duration-300 group-hover:bg-neutral-950/20 rounded-2xl glass-card"></div>
+
+                <div class="relative h-full p-8 flex flex-col justify-end z-30">
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-300 transition-colors mb-4" data-tr="Kendi Motor Simülasyonum" data-en="Custom Motor Simulation">Kendi Motor Simülasyonum</h3>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">C/C++</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">Python</span></span>
+                      <span class="px-3 py-1.5 rounded-lg text-xs font-medium text-white glass-card"><span class="relative z-10">HIL</span></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
           </div>
         </div>
-      </a>
-    </div>
+      </div>
 
-    <!-- Proje 2 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/FPGA-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image2.jpeg" alt="FPGA Verilog Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="FPGA Verilog Projeleri" data-en="FPGA Verilog Projects">FPGA Verilog Projeleri</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Verilog</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Intel Quartus</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">ModelSim</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Proje 3 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/ANSYS-Projects" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image3.png" alt="ANSYS Projeleri" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="ANSYS Projeleri" data-en="ANSYS Projects">ANSYS Projeleri</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Ansys Maxwell</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Motor-CAD</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Simülasyon</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Proje 4 -->
-    <div class="w-full flex-none px-1 py-4">
-      <a href="https://github.com/cemhuner/Custom-Motor-Simulation" target="_blank" class="block relative w-full h-[350px] rounded-2xl overflow-hidden group shadow-xl">
-        <img src="image4.png" alt="Kendi Motor Simülasyonum" class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-        <div class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm group-hover:bg-neutral-950/50 transition-colors duration-300 z-10"></div>
-        <div class="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-teal-500/50 transition-colors duration-300 z-20 pointer-events-none"></div>
-
-        <div class="relative h-full p-8 flex flex-col justify-end z-30">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-400 transition-colors mb-4" data-tr="Kendi Motor Simülasyonum" data-en="Custom Motor Simulation">Kendi Motor Simülasyonum</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">C/C++</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">Python</span>
-              <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg text-xs font-medium text-neutral-200">HIL</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
       <!-- Karusel İndikatörleri (Noktalar) -->
       <div class="flex justify-center gap-2 mt-4">
         <span class="dot w-2 h-2 rounded-full transition-colors bg-teal-500"></span>
-        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
-        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
-        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-700"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-600"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-600"></span>
+        <span class="dot w-2 h-2 rounded-full transition-colors bg-neutral-600"></span>
       </div>
     </section>
 
     <!-- İletişim Bölümü -->
     <section id="iletisim" class="space-y-6 scroll-mt-24">
       <h2 class="text-xs font-semibold tracking-wider text-neutral-400 uppercase" data-tr="İletişim" data-en="Contact">İletişim</h2>
-      <div class="p-8 rounded-xl bg-neutral-900/30 backdrop-blur-xl border border-white/10 text-center space-y-4 shadow-2xl">
-        <h3 class="text-2xl font-bold text-white tracking-tight" data-tr="Bir fikir veya iş birliği mi var?" data-en="Have an idea or collaboration?">Bir fikir veya iş birliği mi var?</h3>
-        <p class="text-neutral-400 max-w-md mx-auto text-sm leading-relaxed" data-tr="Benimle iletişime geçmek için dilediğiniz zaman e-posta gönderebilirsiniz." data-en="Feel free to email me anytime to get in touch.">
+      
+      <div class="p-8 rounded-2xl text-center space-y-4 shadow-2xl glass-card">
+        <h3 class="text-2xl font-bold text-white tracking-tight relative z-10" data-tr="Bir fikir veya iş birliği mi var?" data-en="Have an idea or collaboration?">Bir fikir veya iş birliği mi var?</h3>
+        <p class="text-neutral-200 max-w-md mx-auto text-sm leading-relaxed relative z-10" data-tr="Benimle iletişime geçmek için dilediğiniz zaman e-posta gönderebilirsiniz." data-en="Feel free to email me anytime to get in touch.">
           Benimle iletişime geçmek için dilediğiniz zaman e-posta gönderebilirsiniz.
         </p>
-        <div class="pt-2">
-          <a href="mailto:orhan@cemhuner.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-neutral-950 hover:bg-neutral-200 font-medium text-sm transition-colors">
-            <i class="fa-regular fa-envelope"></i>
-            orhan@cemhuner.com
+        <div class="pt-2 relative z-10">
+          <a href="mailto:orhan@cemhuner.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-colors text-white hover:bg-white/20 glass-card">
+            <span class="relative z-10 flex items-center gap-2">
+              <i class="fa-regular fa-envelope"></i>
+              orhan@cemhuner.com
+            </span>
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-neutral-900 py-8 relative z-10">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+  <footer class="border-t border-white/10 py-8 relative z-10 mt-12">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
       <p data-tr="© 2026 Orhan Cem Hüner. Tüm hakları saklıdır." data-en="© 2026 Orhan Cem Hüner. All rights reserved.">© 2026 Orhan Cem Hüner. Tüm hakları saklıdır.</p>
-      <div class="flex items-center space-x-5 text-neutral-400 text-base">
+      <div class="flex items-center space-x-5 text-neutral-300 text-base">
         <a href="https://github.com/cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
         <a href="https://linkedin.com/in/cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://youtube.com/@cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
@@ -278,7 +337,7 @@
         document.querySelectorAll('[data-tr]').forEach(el => {
           el.innerHTML = lang === 'tr' ? el.getAttribute('data-tr') : el.getAttribute('data-en');
         });
-        langToggleBtn.innerText = lang === 'tr' ? 'EN' : 'TR';
+        langToggleBtn.innerHTML = lang === 'tr' ? '<span class="relative z-10">EN</span>' : '<span class="relative z-10">TR</span>';
         localStorage.setItem('lang', lang);
       };
 
@@ -298,9 +357,8 @@
       const itemsToShow = 1; 
       const maxIndex = totalProjects - itemsToShow;
       
-      // Sonsuz döngü (Loop) mantığı eklendi
-      if (currentIndex > maxIndex) currentIndex = 0; // Sondan başa
-      if (currentIndex < 0) currentIndex = maxIndex; // Baştan sona
+      if (currentIndex > maxIndex) currentIndex = 0; 
+      if (currentIndex < 0) currentIndex = maxIndex; 
 
       const percentage = -(currentIndex * 100);
       track.style.transform = `translateX(${percentage}%)`;
@@ -309,9 +367,9 @@
       dots.forEach((dot, index) => {
         if (index === currentIndex) {
           dot.classList.add('bg-teal-500');
-          dot.classList.remove('bg-neutral-700');
+          dot.classList.remove('bg-neutral-600');
         } else {
-          dot.classList.add('bg-neutral-700');
+          dot.classList.add('bg-neutral-600');
           dot.classList.remove('bg-teal-500');
         }
       });
