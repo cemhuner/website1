@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orhan Cem Hüner - CV</title>
+  <title data-tr="Orhan Cem Hüner - CV" data-en="Orhan Cem Hüner - Resume">Orhan Cem Hüner - CV</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,69 +16,130 @@
       theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], }, colors: { brand: { 500: '#14b8a6', } } } }
     }
   </script>
-</head>
-<body class="bg-neutral-950 text-neutral-200 font-sans antialiased selection:bg-teal-500 selection:text-white pt-24 pb-12">
 
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- Cam Efekti ve Animasyon Stilleri -->
+  <style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+      animation: blob 7s infinite alternate;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+    .mix-blend-screen {
+      mix-blend-mode: screen;
+    }
+
+    /* Evrensel Glass Sınıfı */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 font-sans antialiased selection:bg-teal-500 selection:text-white pt-24 pb-12 relative">
+
+  <!-- Arka Plan Blobları -->
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
+    <div class="absolute top-[10%] left-[10%] w-96 h-96 bg-teal-500 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
+    <div class="absolute top-[40%] right-[10%] w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000"></div>
+    <div class="absolute bottom-[10%] left-[30%] w-[30rem] h-[30rem] bg-emerald-700 rounded-full mix-blend-screen filter blur-[150px] animate-blob animation-delay-4000"></div>
+  </div>
+
+  <!-- Navigasyon -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-card !bg-neutral-950/40 border-b-0">
+    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between relative z-20">
       <a href="index.html" class="font-bold tracking-tight text-white hover:text-teal-400 transition-colors">
         Orhan Cem Hüner<span class="text-teal-400">.</span>
       </a>
-      <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">&larr; Ana Sayfaya Dön</a>
+      <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors" data-tr="&larr; Ana Sayfaya Dön" data-en="&larr; Back to Home">&larr; Ana Sayfaya Dön</a>
     </div>
   </nav>
 
-  <main class="max-w-3xl mx-auto px-6 space-y-12">
+  <main class="max-w-3xl mx-auto px-6 space-y-12 relative z-10">
+    
     <!-- Header / Contact -->
-    <header class="border-b border-neutral-800 pb-8 flex flex-col sm:flex-row justify-between sm:items-end gap-6">
-      <div>
+    <header class="glass-card p-8 rounded-2xl flex flex-col sm:flex-row justify-between sm:items-end gap-6">
+      <div class="relative z-10">
         <h1 class="text-4xl font-bold text-white tracking-tight">Orhan Cem Hüner</h1>
-        <p class="text-teal-400 font-medium mt-1 text-lg">Elektrik Elektronik Mühendisi</p>
-        <p class="text-neutral-500 text-sm mt-2"><i class="fa-solid fa-location-dot mr-1"></i> Çanakkale, Türkiye</p>
+        <p class="text-teal-400 font-medium mt-1 text-lg" data-tr="Elektrik Elektronik Mühendisi" data-en="Electrical and Electronics Engineer">Elektrik Elektronik Mühendisi</p>
+        <p class="text-neutral-400 text-sm mt-2"><i class="fa-solid fa-location-dot mr-1 text-teal-500"></i> <span data-tr="Çanakkale, Türkiye" data-en="Çanakkale, Turkey">Çanakkale, Türkiye</span></p>
       </div>
-      <div class="text-sm text-neutral-400 flex flex-col gap-2">
-        <a href="mailto:orhan@cemhuner.com" class="hover:text-white"><i class="fa-solid fa-envelope mr-2 w-4"></i>orhan@cemhuner.com</a>
-        <span class="hover:text-white"><i class="fa-solid fa-phone mr-2 w-4"></i>+90 553 821 62 99</span>
-        <a href="https://cemhuner.com" target="_blank" class="hover:text-white"><i class="fa-solid fa-globe mr-2 w-4"></i>cemhuner.com</a>
+      <div class="text-sm text-neutral-300 flex flex-col gap-2 relative z-10">
+        <a href="mailto:orhan@cemhuner.com" class="hover:text-white transition-colors"><i class="fa-solid fa-envelope mr-2 w-4 text-teal-500"></i>orhan@cemhuner.com</a>
+        <span class="hover:text-white transition-colors"><i class="fa-solid fa-phone mr-2 w-4 text-teal-500"></i>+90 553 821 62 99</span>
+        <a href="https://github.com/cemhuner" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github mr-2 w-4 text-teal-500"></i>github.com/cemhuner</a>
       </div>
     </header>
 
     <!-- Education -->
     <section>
-      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4">Eğitim</h2>
-      <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="text-white font-medium text-lg">Elektrik ve Elektronik Mühendisliği (Lisans)</h3>
-          <span class="text-neutral-500 text-sm">2021 - 2026</span>
+      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4" data-tr="Eğitim" data-en="Education">Eğitim</h2>
+      <div class="glass-card p-6 rounded-xl">
+        <div class="relative z-10 flex justify-between items-start mb-2">
+          <h3 class="text-white font-medium text-lg" data-tr="Elektrik ve Elektronik Mühendisliği (Lisans)" data-en="BSc in Electrical and Electronics Engineering">Elektrik ve Elektronik Mühendisliği (Lisans)</h3>
+          <span class="text-neutral-400 text-sm font-medium">2021 - 2026</span>
         </div>
-        <p class="text-neutral-400">Pamukkale Üniversitesi, Denizli</p>
-        <p class="text-neutral-400 mt-2 text-sm font-mono bg-neutral-950 px-2 py-1 inline-block rounded">GPA: 3.08</p>
+        <p class="relative z-10 text-neutral-300" data-tr="Pamukkale Üniversitesi, Denizli" data-en="Pamukkale University, Denizli">Pamukkale Üniversitesi, Denizli</p>
+        <p class="relative z-10 text-neutral-300 mt-2 text-sm font-mono bg-white/5 border border-white/10 px-2 py-1 inline-block rounded">GPA: 3.08</p>
       </div>
     </section>
 
     <!-- Experiences -->
     <section>
-      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4">Deneyimler</h2>
+      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4" data-tr="Deneyimler" data-en="Experiences">Deneyimler</h2>
       <div class="space-y-4">
         
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-white font-medium">Stajyer - EÜAŞ 18 Mart Termik Santrali</h3>
-            <span class="text-neutral-500 text-sm">2025</span>
+        <div class="glass-card p-6 rounded-xl">
+          <div class="relative z-10 flex justify-between items-start mb-2">
+            <h3 class="text-white font-medium text-lg" data-tr="Stajyer - EÜAŞ 18 Mart Termik Santrali" data-en="Internship - EÜAŞ 18 Mart Thermal Power Plant">Stajyer - EÜAŞ 18 Mart Termik Santrali</h3>
+            <span class="text-neutral-400 text-sm font-medium">2025</span>
           </div>
-          <ul class="list-disc list-inside text-neutral-400 text-sm space-y-2 mt-3">
-            <li>Güç üretim ünitelerindeki endüstriyel kontrol döngülerini, SCADA altyapılarını ve sensör ağlarını analiz ettim.</li>
-            <li>Büyük ölçekli senkron jeneratörlerin bakım ve teşhis prosedürlerine yardımcı oldum.</li>
+          <ul class="relative z-10 list-disc list-outside ml-4 text-neutral-300 text-sm space-y-2 mt-3">
+            <li data-tr="Güç üretim ünitelerindeki endüstriyel kontrol döngülerini, SCADA altyapılarını ve sensör ağlarını analiz ettim." data-en="Analyzed industrial control loops, SCADA infrastructures, and sensor networks within the power generation units.">Güç üretim ünitelerindeki endüstriyel kontrol döngülerini, SCADA altyapılarını ve sensör ağlarını analiz ettim.</li>
+            <li data-tr="Büyük ölçekli senkron jeneratörlerin bakım ve teşhis prosedürlerine yardımcı oldum." data-en="Assisted in the maintenance and diagnostic procedures of large scale synchronous generators.">Büyük ölçekli senkron jeneratörlerin bakım ve teşhis prosedürlerine yardımcı oldum.</li>
           </ul>
         </div>
 
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-white font-medium">Stajyer - KALE Kaleseramik A.Ş.</h3>
-            <span class="text-neutral-500 text-sm">2024</span>
+        <div class="glass-card p-6 rounded-xl">
+          <div class="relative z-10 flex justify-between items-start mb-2">
+            <h3 class="text-white font-medium text-lg" data-tr="Stajyer - KALE Kaleseramik A.Ş." data-en="Internship - KALE Kaleseramik A.Ş.">Stajyer - KALE Kaleseramik A.Ş.</h3>
+            <span class="text-neutral-400 text-sm font-medium">2024</span>
           </div>
-          <ul class="list-disc list-inside text-neutral-400 text-sm space-y-2 mt-3">
-            <li>Aktif üretim hatlarındaki PLC tabanlı otomasyon sistemlerini ve saha enstrümantasyonunu inceledim.</li>
+          <ul class="relative z-10 list-disc list-outside ml-4 text-neutral-300 text-sm space-y-2 mt-3">
+            <li data-tr="Aktif üretim hatlarındaki PLC tabanlı otomasyon sistemlerini ve saha enstrümantasyonunu inceledim." data-en="Examined PLC-based automation systems and field instrumentation on active production lines.">Aktif üretim hatlarındaki PLC tabanlı otomasyon sistemlerini ve saha enstrümantasyonunu inceledim.</li>
           </ul>
         </div>
 
@@ -87,27 +148,27 @@
 
     <!-- Projects -->
     <section>
-      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4">Projeler</h2>
+      <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4" data-tr="Projeler" data-en="Projects">Projeler</h2>
       <div class="space-y-4">
         
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg">
-          <h3 class="text-white font-medium mb-1">Gömülü Sistemlerde Derin Öğrenme Modelleri Kullanılarak Asenkron Motorlarda Arıza Tespiti (Lisans Bitirme Projesi - TÜBİTAK-2209A)</h3>
-          <ul class="list-disc list-inside text-neutral-400 text-sm space-y-2 mt-3">
-            <li>STM32F411 ve STM32F401 mikrodenetleyicileri ile dağıtık gömülü mimari tasarlandı.</li>
-            <li>FreeRTOS üzerinde; kuyruklar (queues) ve semaforlar kullanılarak veri toplama, DSP ve ağ alt sistemleri arasında sağlam senkronizasyon sağlayan çok iş parçacıklı (multi-threaded) donanım yazılımı (firmware) oluşturuldu.</li>
-            <li>Uç bilişimde gerçek zamanlı hesaplama için MCU'lar üzerinde hibrit 1D-CNN ve MLP yapıları uygulanarak %90'ın üzerinde arıza tespit hassasiyeti elde edildi.</li>
-            <li>Python (PyQt6 & pyqtgraph) kullanılarak gerçek zamanlı TCP/IP veri alımı yeteneğine sahip çok iş parçacıklı Masaüstü HIL (Hardware-in-the-Loop) Arayüzü geliştirildi.</li>
+        <div class="glass-card p-6 rounded-xl">
+          <h3 class="relative z-10 text-white font-medium text-lg mb-1 leading-snug" data-tr="Gömülü Sistemlerde Derin Öğrenme Modelleri Kullanılarak Asenkron Motorlarda Arıza Tespiti (Lisans Bitirme Projesi)" data-en="Fault Detection in Induction Motors Using Deep Learning Models in Embedded Systems (BSc Final Project)">Gömülü Sistemlerde Derin Öğrenme Modelleri Kullanılarak Asenkron Motorlarda Arıza Tespiti (Lisans Bitirme Projesi)</h3>
+          <ul class="relative z-10 list-disc list-outside ml-4 text-neutral-300 text-sm space-y-2 mt-4">
+            <li data-tr="STM32F411 ve STM32F401 mikrodenetleyicileri ile dağıtık gömülü mimari tasarlandı." data-en="Designed a distributed embedded architecture with STM32F411 and STM32F401 microcontrollers.">STM32F411 ve STM32F401 mikrodenetleyicileri ile dağıtık gömülü mimari tasarlandı.</li>
+            <li data-tr="FreeRTOS üzerinde; kuyruklar (queues) ve semaforlar kullanılarak veri toplama, DSP ve ağ alt sistemleri arasında sağlam senkronizasyon sağlayan çok iş parçacıklı (multi-threaded) donanım yazılımı (firmware) oluşturuldu." data-en="Architected multi-threaded firmware on FreeRTOS, utilizing queues and semaphores to orchestrate robust synchronization between Data Acquisition, DSP, and Network subsystems.">FreeRTOS üzerinde; kuyruklar (queues) ve semaforlar kullanılarak veri toplama, DSP ve ağ alt sistemleri arasında sağlam senkronizasyon sağlayan çok iş parçacıklı (multi-threaded) donanım yazılımı (firmware) oluşturuldu.</li>
+            <li data-tr="Uç bilişimde gerçek zamanlı hesaplama için MCU'lar üzerinde hibrit 1D-CNN ve MLP yapıları uygulanarak %90'ın üzerinde arıza tespit hassasiyeti elde edildi." data-en="Implemented hybrid 1D-CNN and MLP structures on MCUs for real-time edge computing, achieving over 90% fault detection accuracy.">Uç bilişimde gerçek zamanlı hesaplama için MCU'lar üzerinde hibrit 1D-CNN ve MLP yapıları uygulanarak %90'ın üzerinde arıza tespit hassasiyeti elde edildi.</li>
+            <li data-tr="Python (PyQt6 & pyqtgraph) kullanılarak gerçek zamanlı TCP/IP veri alımı yeteneğine sahip çok iş parçacıklı Masaüstü HIL (Hardware-in-the-Loop) Arayüzü geliştirildi." data-en="Developed a multi-threaded Desktop HIL Interface using Python (PyQt6 & pyqtgraph) capable of real-time TCP/IP data ingestion and spectrogram visualization.">Python (PyQt6 & pyqtgraph) kullanılarak gerçek zamanlı TCP/IP veri alımı yeteneğine sahip çok iş parçacıklı Masaüstü HIL (Hardware-in-the-Loop) Arayüzü geliştirildi.</li>
           </ul>
         </div>
 
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-white font-medium">Teknofest Savaşan İHA Yarışması Finalisti</h3>
-            <span class="text-neutral-500 text-sm">2023</span>
+        <div class="glass-card p-6 rounded-xl">
+          <div class="relative z-10 flex justify-between items-start mb-2">
+            <h3 class="text-white font-medium text-lg" data-tr="Teknofest Savaşan İHA Yarışması Finalisti" data-en="Teknofest Fighter UAV Competition Finalist">Teknofest Savaşan İHA Yarışması Finalisti</h3>
+            <span class="text-neutral-400 text-sm font-medium">2023</span>
           </div>
-          <ul class="list-disc list-inside text-neutral-400 text-sm space-y-2 mt-3">
-            <li>Otonom uçuş stabilitesi ve hedef takibi için gerçek zamanlı PID kontrol algoritmaları geliştirildi.</li>
-            <li>Görüş (vision) sistemleri uçuş kontrolcülerine entegre edilerek, kısıtlı bir alanda yüksek hassasiyetli takip doğruluğu elde edildi.</li>
+          <ul class="relative z-10 list-disc list-outside ml-4 text-neutral-300 text-sm space-y-2 mt-3">
+            <li data-tr="Otonom uçuş stabilitesi ve hedef takibi için gerçek zamanlı PID kontrol algoritmaları geliştirildi." data-en="Developed real-time PID control algorithms for autonomous flight stability and target tracking.">Otonom uçuş stabilitesi ve hedef takibi için gerçek zamanlı PID kontrol algoritmaları geliştirildi.</li>
+            <li data-tr="Görüş (vision) sistemleri uçuş kontrolcülerine entegre edilerek, kısıtlı bir alanda yüksek hassasiyetli takip doğruluğu elde edildi." data-en="Integrated vision systems with flight controllers, achieving high-precision pursuit accuracy in a constrained embedded environment.">Görüş (vision) sistemleri uçuş kontrolcülerine entegre edilerek, kısıtlı bir alanda yüksek hassasiyetli takip doğruluğu elde edildi.</li>
           </ul>
         </div>
 
@@ -118,31 +179,57 @@
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
       <div>
-        <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4">Yetenekler & Araçlar</h2>
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg text-sm text-neutral-300 space-y-3">
-          <p><span class="text-white font-medium block mb-1">Gömülü Sistemler:</span> RTOS, UART, I2C, SPI, TCP/IP, UDP.</p>
-          <p><span class="text-white font-medium block mb-1">Programlama:</span> C/C++, Verilog, Python, MATLAB.</p>
-          <p><span class="text-white font-medium block mb-1">Çatı/Kütüphaneler:</span> CMSIS-DSP, TensorFlow, OpenCV, PyQt6.</p>
-          <p><span class="text-white font-medium block mb-1">Yazılımlar:</span> Ansys Maxwell 2D/3D, MATLAB/Simulink, AMD Vivado Design Suite, MS Office.</p>
+        <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4" data-tr="Yetenekler" data-en="Skills">Yetenekler</h2>
+        <div class="glass-card p-6 rounded-xl text-sm text-neutral-300 space-y-4 h-full">
+          <p class="relative z-10"><span class="text-white font-medium block mb-1" data-tr="Gömülü Sistemler:" data-en="Embedded Systems:">Gömülü Sistemler:</span> FreeRTOS, UART, I2C, SPI, TCP/IP, UDP.</p>
+          <p class="relative z-10"><span class="text-white font-medium block mb-1" data-tr="Programlama:" data-en="Programming:">Programlama:</span> C, Python, MATLAB.</p>
+          <p class="relative z-10"><span class="text-white font-medium block mb-1" data-tr="Çatı/Kütüphaneler:" data-en="Frameworks:">Çatı/Kütüphaneler:</span> CMSIS-DSP, TensorFlow, OpenCV, PyQt6, pyqtgraph.</p>
+          <p class="relative z-10"><span class="text-white font-medium block mb-1" data-tr="Yazılımlar:" data-en="Software:">Yazılımlar:</span> Ansys Maxwell 2D/3D, MATLAB/Simulink, MS Office.</p>
         </div>
       </div>
 
       <div>
-        <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4">Yabancı Dil</h2>
-        <div class="bg-neutral-900/40 border border-neutral-800 p-5 rounded-lg text-sm text-neutral-300">
-          <p>İngilizce - <span class="text-teal-400 font-medium">C1</span></p>
+        <h2 class="text-sm font-semibold tracking-wider text-teal-400 uppercase mb-4" data-tr="Yabancı Dil" data-en="Languages">Yabancı Dil</h2>
+        <div class="glass-card p-6 rounded-xl text-sm text-neutral-300 h-full">
+          <p class="relative z-10" data-tr="İngilizce - <span class='text-teal-400 font-medium'>C1</span>" data-en="English - <span class='text-teal-400 font-medium'>C1</span>">İngilizce - <span class="text-teal-400 font-medium">C1</span></p>
         </div>
       </div>
 
     </section>
 
     <!-- CV İndirme Alanı -->
-    <section class="pt-8 border-t border-neutral-800 text-center">
-      <a href="cv_güncel.pdf" download class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-teal-500 hover:bg-teal-600 text-neutral-950 font-bold text-sm transition-all shadow-lg shadow-teal-500/20">
-        <i class="fa-solid fa-download"></i>
-        CV'mi PDF Olarak İndir
+    <section class="pt-8 text-center">
+      <a href="cv_güncel.pdf" download class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:bg-white/20 glass-card">
+        <span class="relative z-10 flex items-center gap-3">
+          <i class="fa-solid fa-download"></i>
+          <span data-tr="CV'mi PDF Olarak İndir" data-en="Download My CV as PDF">CV'mi PDF Olarak İndir</span>
+        </span>
       </a>
     </section>
   </main>
+
+  <!-- Dil Entegrasyon Scripti -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // LocalStorage'dan ana sayfada kaydedilmiş dili çekiyoruz
+      let currentLang = localStorage.getItem('lang');
+      
+      // Eğer localStorage'da kayıtlı dil yoksa varsayılan olarak Türkçe başlat
+      if (!currentLang) {
+        currentLang = 'tr';
+      }
+
+      const applyLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-tr]').forEach(el => {
+          // HTML içeren etiketlerin güvenli değiştirilmesi
+          el.innerHTML = lang === 'tr' ? el.getAttribute('data-tr') : el.getAttribute('data-en');
+        });
+      };
+
+      // Seçili dili CV sayfasına uygula
+      applyLanguage(currentLang);
+    });
+  </script>
 </body>
 </html>
